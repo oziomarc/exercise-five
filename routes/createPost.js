@@ -1,5 +1,7 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router();
+const firestore = require('firebase/firestore');
+const db = firestore.getFirestore();
 
 const createPostform = `
 <h1>Create Post</h1>
@@ -32,12 +34,14 @@ router.get("/submit", (req, res) => {
     const setBlogPost = firestore.setDoc (
         firestore.doc(db, "posts", idFromTitle),
         {
-            title, text, author
+            title: title,
+            text: text,
+            author: author,
         }
     );
 
     setBlogPost 
-    .then ((Response) => {
+    .then ((response) => {
         res.send(`
             <h1>Submission successful!</h1>
             <p><a href="...></a></p>
