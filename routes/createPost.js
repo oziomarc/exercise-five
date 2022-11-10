@@ -28,14 +28,28 @@ router.get("/submit", (req, res) => {
     const text = queryParams.postText;
     const author = queryParams.author;
 
+    const idFromTitle = title.replace(/\s+/g, "-").toLowerCase();
+
     const setBlogPost = firestore.setDoc (
-        firestore.doc(db, "posts"),
+        firestore.doc(db, "posts", idFromTitle),
         {
             title, text, author
         }
-    )
+    );
 
-    res.send({title, text, author})
+    setBlogPost 
+    .then ((Response) => {
+        res.send(`
+            <h1>Submission successful!</h1>
+            <p><a href="...></a></p>
+            <p><a href="...></a></p>
+        `)
+    })
+    .catch((error) => {
+        console.warn(error)
+    })
+
+    // res.send({title, text, author})
 })
 
 module.exports = router ;
