@@ -10,14 +10,18 @@ const firebaseConfig = {
     storageBucket: "exercise-five-fall-2022-4d76f.appspot.com",
     messagingSenderId: "56658509396",
     appId: "1:56658509396:web:8e199eaad5f336ff76b7c1"
-  };
+};
 
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 const homePage = require('./routes/index.js')
+const singlePostRoute = require('./routes/singlePost')
+const createPostRoute = require('./routes/createPost')
 
 app.use('/', homePage)
+app.use('/post', singlePostRoute)
+app.use('/create', createPostRoute)
 
 app.listen(port, () => (
     console.log(`Example app listening on port ${port}`)

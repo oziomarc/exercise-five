@@ -1,11 +1,10 @@
-const firestore = require("firebase/firstore");
-const router = require(".");
-const db = firstore.getFirestore();
+const express = require('express')
+const router = express.Router();
 
 const createPostform = `
 <h1>Create Post</h1>
 <form action="/create/submit">
-<div style=display: flex; flex-direction: column max-width: 400px:
+<div style="display: flex; flex-direction: column; max-width: 400px;">
     <input type="text" name="postTitle" placeholder="Title" style: margin-bottom: 20px />
     <input type="text" name="postText" placeholder="Text" />
     <input type="text" name="author" placeholder="Author" />
