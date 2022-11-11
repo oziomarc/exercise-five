@@ -41,18 +41,18 @@ router.get("/submit", (req, res) => {
     );
 
     setBlogPost 
-    .then ((response) => {
+    .then((response) => {
         res.send(`
             <h1>Submission successful!</h1>
-            <p><a href="...></a></p>
-            <p><a href="...></a></p>
-        `)
+            <p><a href="/create">Add another post</a></p>
+            <p><a href="/">RETURN HOME</a></p>
+        `);
     })
     .catch((error) => {
         console.warn(error)
+        res.send(`error submiting: ${error.toString()}`)
     })
-
-    // res.send({title, text, author})
+    
 })
 
-module.exports = router ;
+module.exports = router;
